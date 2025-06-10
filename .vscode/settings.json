@@ -1,0 +1,7 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "stdlib.h": "c",
+        "st7735.h": "c"
+    }
+}

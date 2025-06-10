@@ -1,0 +1,6 @@
+/home/lenovo/STM32Cube progtct/ST23355/CMakeFiles/ST23355.dir
+/home/lenovo/STM32Cube progtct/ST23355/CMakeFiles/edit_cache.dir
+/home/lenovo/STM32Cube progtct/ST23355/CMakeFiles/rebuild_cache.dir
+/home/lenovo/STM32Cube progtct/ST23355/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/lenovo/STM32Cube progtct/ST23355/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/lenovo/STM32Cube progtct/ST23355/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
