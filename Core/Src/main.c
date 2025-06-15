@@ -27,8 +27,6 @@
 #include <stm32f4xx_hal_rcc.h>
 #include <stm32f4xx_hal_uart.h>
 #include <stdio.h>
-uint8_t T_calk = 0;
-uint8_t TX_data[30] = "Hello World\n\r";
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,7 +71,7 @@ static void MX_RTC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/* void demoTFT(void)
+ void demoTFT(void)
 {
 
   
@@ -168,32 +166,32 @@ static void MX_RTC_Init(void);
  HAL_Delay(1000);
 
 
-} */
+} 
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
-
+  
   /* USER CODE BEGIN 1 */
-
+  
   /* USER CODE END 1 */
-
+  
   /* MCU Configuration--------------------------------------------------------*/
-
+  
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
+  
   /* USER CODE BEGIN Init */
-
+  
   /* USER CODE END Init */
-
+  
   /* Configure the system clock */
   SystemClock_Config();
-
+  
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -207,22 +205,28 @@ int main(void)
   /* USER CODE BEGIN 2 */
   ST7735_Init();
   ST7735_Backlight_On();
-  char buffer[50];
+  
   int value = 0;
   ST7735_FillScreen(ST7735_BLACK);
-    ST7735_DrawString(1, 1, "RUNNING Program...", Font_7x10, ST7735_GREEN, ST7735_BLACK);
-
+  ST7735_DrawString(1, 1, "RUNNING Program...", Font_7x10, ST7735_GREEN, ST7735_BLACK);
+  uint8_t TX_data[] = "Hello World\n\r";
+  uint8_t TX_buffer[] = "RUNNING: ";
+  char buffer[50];
+  
+  
   /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    // demoTFT(); 
-
-    HAL_UART_Transmit (&huart2, TX_data, 30, 0xffff);
     
-    sprintf(buffer, "RUNNING: %d", value); 
+    /* Infinite loop */
+    /* USER CODE BEGIN WHILE */
+    while (1)
+    {
+      // demoTFT(); 
+      sprintf(buffer, "RUNNING: %d", value); 
+      
+      HAL_UART_Transmit (&huart2, TX_buffer, sizeof TX_buffer/sizeof TX_buffer[0], 0xffff);
+
+      HAL_UART_Transmit (&huart2, TX_data, sizeof TX_data, 0xffff);
+
     ST7735_DrawString(1, 20, buffer, Font_7x10, ST7735_GREEN, ST7735_BLACK);
     
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
